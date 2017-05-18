@@ -20,6 +20,7 @@ namespace std {
 			class C
 			{
 			public:
+				// can use std, Mcsf, AppPlugin namespace
 				void fun(ptrA a, B b, A::Ptr pa, std::shared_ptr<ANY::X> x)
 				{
 					cout << "namespace test";
