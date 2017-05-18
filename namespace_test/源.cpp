@@ -19,7 +19,7 @@ namespace Mcsf
 		class C
 		{
 		public:
-			void fun(ptrA a, B b, A::Ptr pa, std::shared_ptr<ANY::X> x)
+			void fun(ptrA a, B b, A::Ptr pa, std::shared_ptr<Y> x)
 			{
 
 			}
