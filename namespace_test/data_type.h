@@ -1,21 +1,23 @@
 
-namespace Mcsf
-{
-	class A
+namespace std {
+	namespace Mcsf
 	{
-	public:
-		typedef std::shared_ptr<A> Ptr;
-		int m_a;
-	};
-	typedef std::shared_ptr<A> ptrA;
-
-
-	namespace AppPlugin
-	{
-		class B
+		class A
 		{
 		public:
-			int m_b;
+			typedef std::shared_ptr<A> Ptr;
+			int m_a;
 		};
+		typedef std::shared_ptr<A> ptrA;
+
+
+		namespace AppPlugin
+		{
+			class B
+			{
+			public:
+				int m_b;
+			};
+		}
 	}
 }

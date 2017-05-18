@@ -12,24 +12,26 @@ namespace ANY
 	class X;
 }
 
-namespace Mcsf
-{
-	namespace AppPlugin
+namespace std {
+	namespace Mcsf
 	{
-		class C
+		namespace AppPlugin
 		{
-		public:
-			void fun(ptrA a, B b, A::Ptr pa, std::shared_ptr<Y> x)
+			class C
 			{
-
-			}
-		};
+			public:
+				void fun(ptrA a, B b, A::Ptr pa, std::shared_ptr<ANY::X> x)
+				{
+					cout << "namespace test";
+				}
+			};
+		}
 	}
 }
 
 int main()
 {
-	Mcsf::AppPlugin::C c;
+	std::Mcsf::AppPlugin::C c;
 	c;
 	return 0;
 }
