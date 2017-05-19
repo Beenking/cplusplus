@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{F9534724-418E-4103-BD1F-7F50EED5A889}</ProjectGuid>
+    <ProjectGuid>{3D8258BD-EE17-4E43-A7AF-41C6FF2F96E0}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>thread_test</RootNamespace>
+    <RootNamespace>mutex_test</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

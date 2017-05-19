@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{F9534724-418E-4103-BD1F-7F50EED5A889}</ProjectGuid>
+    <ProjectGuid>{B949E972-5AFC-42EB-9E5C-77223EF91A84}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>thread_test</RootNamespace>
+    <RootNamespace>vector_erase_index</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
