@@ -23,6 +23,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "return_value_optimization",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mutex_lock_condition_variable", "mutex_lock_condition_variable\mutex_lock_condition_variable.vcxproj", "{97E2AB60-63D1-4E73-882D-A93F855DB872}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "thread_interrupt_point", "thread_interrupt_point\thread_interrupt_point.vcxproj", "{27D830BF-B4DA-47A0-8F93-F8A9F1231913}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -113,6 +115,14 @@ Global
 		{97E2AB60-63D1-4E73-882D-A93F855DB872}.Release|x64.Build.0 = Release|x64
 		{97E2AB60-63D1-4E73-882D-A93F855DB872}.Release|x86.ActiveCfg = Release|Win32
 		{97E2AB60-63D1-4E73-882D-A93F855DB872}.Release|x86.Build.0 = Release|Win32
+		{27D830BF-B4DA-47A0-8F93-F8A9F1231913}.Debug|x64.ActiveCfg = Debug|x64
+		{27D830BF-B4DA-47A0-8F93-F8A9F1231913}.Debug|x64.Build.0 = Debug|x64
+		{27D830BF-B4DA-47A0-8F93-F8A9F1231913}.Debug|x86.ActiveCfg = Debug|Win32
+		{27D830BF-B4DA-47A0-8F93-F8A9F1231913}.Debug|x86.Build.0 = Debug|Win32
+		{27D830BF-B4DA-47A0-8F93-F8A9F1231913}.Release|x64.ActiveCfg = Release|x64
+		{27D830BF-B4DA-47A0-8F93-F8A9F1231913}.Release|x64.Build.0 = Release|x64
+		{27D830BF-B4DA-47A0-8F93-F8A9F1231913}.Release|x86.ActiveCfg = Release|Win32
+		{27D830BF-B4DA-47A0-8F93-F8A9F1231913}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
