@@ -1,5 +1,6 @@
 
 #include <windows.h>
+#include <iostream>
 
 
 typedef void(*alert)();
@@ -10,16 +11,19 @@ int main()
 {
 	alert func = NULL;
 
-	HINSTANCE h = LoadLibraryA("test_dll.dll");
+	HINSTANCE h = LoadLibraryExA("test_dll.dll", NULL, LOAD_WITH_ALTERED_SEARCH_PATH);
 
 	if (h)
 	{
 		func = (alert)GetProcAddress(h, "print");
+		if (NULL != func)
+		{
+			func();
+		}
 	}
-
-	if (NULL != func)
+	else
 	{
-		func();
+		std::cout << GetLastError();
 	}
 
 	FreeLibrary(h);
