@@ -1,6 +1,6 @@
 #include "object_factory.h"
 
-REGISTER_CLASS(Animal, Dog)
+//REGISTER_CLASS(Animal, Dog)
 
 int main()
 {

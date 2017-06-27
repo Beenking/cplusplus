@@ -3,7 +3,7 @@
 class ConcreteClass##ObjectCreator								\
 {																\
 public:															\
-	ConcreteClass##ObjectCreator(const std::string & strID)		\	
+	ConcreteClass##ObjectCreator(const std::string & strID)		\
 	{															\
 		;														\
 	}															\
