@@ -1,16 +1,14 @@
 #include "print_fun.h"
 #include <iostream>
 
-
-extern "C"
-
+void Test::print()
 {
-	void print()
+    std::cout << "Hello,World! OK ";
+}
 
-	{
+int Test::i = 5;
 
-		std::cout <<  "Hello,World!jjjjjxxxffss";
-
-	}
-
+void MyPrint()
+{
+    std::cout << "My Print" << std::endl;
 }

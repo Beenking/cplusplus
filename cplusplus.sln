@@ -36,6 +36,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "reflection_cpp_test_static", "reflection_cpp_test_static\reflection_cpp_test_static.vcxproj", "{C61FB28B-A596-4604-92C8-58C145D4ED60}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dllexport_test", "dllexport_test\dllexport_test.vcxproj", "{592A3619-3F18-4546-916F-8DBEECCAD2D9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{86F8415A-4E35-417F-8A5E-C937E9E253D0} = {86F8415A-4E35-417F-8A5E-C937E9E253D0}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "smart_ptr_test", "smart_ptr_test\smart_ptr_test.vcxproj", "{5A027351-481C-4EBB-AA4C-371EF28D9C7E}"
 EndProject
