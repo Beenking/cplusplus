@@ -1,15 +1,11 @@
-//#include "print_fun.h"
-
-extern "C" 
-{
-	__declspec(dllimport) void print();
-}
-
-using namespace std;
-
-//#define DLL_EXPORT
+#include "../test_dll/print_fun.h"
+#include <iostream>
 
 int main()
 {
-	print();
+    Test::print();
+    std::cout << Test::i;
+
+    MyPrint();
+    return 0;
 }
