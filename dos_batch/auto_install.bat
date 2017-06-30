@@ -41,7 +41,7 @@ cd %~p0
 @rem install package use UIHPM.bat
 if exist ./UIHPM.bat (
 	echo starting install package...
-	@rem UIHPM i dev %uideal_package_output_remote_package_file%
+	UIHPM i dev %uideal_package_output_remote_package_file%
 	echo install package successed.
 	echo %date_time% : %install_package% install succssed>>C:\\auto_install_log.txt.
 ) else (
