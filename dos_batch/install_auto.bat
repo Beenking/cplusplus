@@ -46,4 +46,5 @@ if exist ./UIHPM.bat (
 	echo UIHPM.bat is missing.
 )
 
+net use %driver% /d /y
 pause

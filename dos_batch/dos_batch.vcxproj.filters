@@ -18,5 +18,19 @@
     <None Include="install.bat">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="install_auto.bat">
+      <Filter>源文件</Filter>
+    </None>
+    <None Include="install_auto_cancel.bat">
+      <Filter>源文件</Filter>
+    </None>
+    <None Include="install_auto_schtasks.bat">
+      <Filter>源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="install_auto.xml">
+      <Filter>源文件</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

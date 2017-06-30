@@ -111,6 +111,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="install.bat" />
+    <None Include="install_auto.bat" />
+    <None Include="install_auto_cancel.bat" />
+    <None Include="install_auto_schtasks.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="install_auto.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

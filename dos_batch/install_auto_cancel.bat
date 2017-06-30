@@ -1,0 +1,1 @@
+SCHTASKS /Delete /TN UIHAutoInstall /F
