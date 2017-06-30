@@ -110,12 +110,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="install.bat" />
+    <None Include="auto_install.bat" />
+    <None Include="auto_install_after.bat" />
+    <None Include="auto_install_cancel.bat" />
+    <None Include="auto_install_schtasks.bat" />
     <None Include="install_auto.bat" />
     <None Include="install_auto_cancel.bat" />
     <None Include="install_auto_schtasks.bat" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="auto_install.xml" />
+    <Xml Include="auto_install_after.xml" />
     <Xml Include="install_auto.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
