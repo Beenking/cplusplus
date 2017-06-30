@@ -1,10 +1,11 @@
 @echo on
+setlocal enabledelayedexpansion
+set date_time=%date:~0,10% %time:~0,8%
 
 @rem change modality
-setlocal enabledelayedexpansion
 set file=a.xml
 if not exist %file% (
-	echo %file% missing...
+	echo %date_time% : %file% missing...>>C:\\auto_install_after_error.txt
 	pause
 	goto import
 )
