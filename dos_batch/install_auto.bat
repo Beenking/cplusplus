@@ -2,8 +2,10 @@
 @echo off
 set driver=Z:
 set uideal_package_output_remote=\\10.6.4.5\SW_Publish\UIDeal_BuildOutput
+set date_time=%date:~0,10% %time:~0,8%
+
 if not exist %uideal_package_output_remote% (
-	echo remote package cannt use
+	echo %date_time% : remote package cannt use>>C:\\install_auto_error.txt
 	pause
 	exit
 )
@@ -41,9 +43,10 @@ if exist ./UIHPM.bat (
 	echo starting install package...
 	UIHPM i dev %uideal_package_output_remote_package_file%
 	echo install package successed.
-	echo %today_year_month_day% : %install_package% install succssed>>install_auto_log.txt.
+	echo %date_time% : %install_package% install succssed>>C:\\install_auto_log.txt.
 ) else (
-	echo UIHPM.bat is missing.
+	echo %date_time% : UIHPM.bat is missing>>C:\\install_auto_error.txt
+	pause
 )
 
 net use %driver% /d /y
