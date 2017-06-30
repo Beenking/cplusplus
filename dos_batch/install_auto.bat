@@ -1,10 +1,11 @@
 @rem install zhenghe or uideal system from remote automaticlly
 @echo off
-set driver=Z:
+set driver=X:
 set uideal_package_output_remote=\\10.6.4.5\SW_Publish\UIDeal_BuildOutput
 set date_time=%date:~0,10% %time:~0,8%
 
 if not exist %uideal_package_output_remote% (
+	echo %date_time% : remote package cannt use
 	echo %date_time% : remote package cannt use>>C:\\install_auto_error.txt
 	pause
 	exit
@@ -45,6 +46,7 @@ if exist ./UIHPM.bat (
 	echo install package successed.
 	echo %date_time% : %install_package% install succssed>>C:\\install_auto_log.txt.
 ) else (
+	echo %date_time% : UIHPM.bat is missing
 	echo %date_time% : UIHPM.bat is missing>>C:\\install_auto_error.txt
 	pause
 )
