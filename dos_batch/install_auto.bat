@@ -7,7 +7,6 @@ set date_time=%date:~0,10% %time:~0,8%
 if not exist %uideal_package_output_remote% (
 	echo %date_time% : remote package cannt use
 	echo %date_time% : remote package cannt use>>C:\\install_auto_error.txt
-	pause
 	exit
 )
 
@@ -48,8 +47,6 @@ if exist ./UIHPM.bat (
 ) else (
 	echo %date_time% : UIHPM.bat is missing
 	echo %date_time% : UIHPM.bat is missing>>C:\\install_auto_error.txt
-	pause
 )
 
 net use %driver% /d /y
-pause
