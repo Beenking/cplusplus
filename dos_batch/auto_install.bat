@@ -4,7 +4,7 @@ set driver=X:
 set log.txt=C:\\auto_install_log.txt
 set log_error.txt=C:\\auto_install_error.txt
 set uideal_package_output_remote=\\127.0.0.1\SharedDir
-set date_time=%date:~0,10% %time:~0,8%
+set date_time=%date:~0,10%%time:~0,8%
 
 @rem exit if remote path not found
 if not exist %uideal_package_output_remote% (
@@ -47,9 +47,9 @@ if "%install_package%"=="empty" (
 set uideal_package_output_remote_package_file=%uideal_package_output_remote%\%today_year_month%\%install_package%
 echo %date_time% : installing remote package path is %uideal_package_output_remote_package_file%>>%log.txt%
 
+@rem install package use UIHPM.bat
 %~d0
 cd %~p0
-@rem install package use UIHPM.bat
 if exist ./UIHPM.bat (
     echo %date_time% : starting install package...>>%log.txt%
     UIHPM i dev %uideal_package_output_remote_package_file%
@@ -63,6 +63,7 @@ if exist ./UIHPM.bat (
 	goto failed
 )
 
+@rem result handler
 :failed
 echo --------------------------------------------------------------------------->>%log_error.txt%
 net use %driver% /d /y
