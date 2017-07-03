@@ -1,10 +1,11 @@
 @rem install zhenghe or uideal system from remote automaticlly
 @echo off
+setlocal enabledelayedexpansion
 set driver=X:
 set log.txt=C:\\auto_install_log.txt
 set log_error.txt=C:\\auto_install_error.txt
 set uideal_package_output_remote=\\10.6.4.5\SW_Publish\UIDeal_BuildOutput
-set date_time=%date:~0,10%%time:~0,8%
+set date_time=%date:~0,10% %time:~0,8%
 
 @rem exit if remote path not found
 if not exist %uideal_package_output_remote% (
@@ -30,11 +31,13 @@ net use %driver%  %uideal_package_output_remote%
 %driver%
 cd %today_year_month%
 
+@rem get latest install package
 @rem %driver%\%today_year_month%\
 set install_package=empty
 for %%i in (*%today_year_month_day%*.exe) do (
-    set install_package=%%i
-    echo installing package file is %%i
+    if %%i GTR !install_package! (
+        set install_package=%%i
+    )
 )
 
 @rem exit if no package on today
@@ -55,7 +58,9 @@ if exist ./UIHPM.bat (
     UIHPM i dev %uideal_package_output_remote_package_file%
     echo install package successed.
     echo %date_time% : %install_package% install succssed>>%log.txt%
-    goto successed
+    echo --------------------------------------------------------------------------->>%log.txt%
+    net use %driver% /d /y
+    exit
     
 ) else (
     echo %date_time% : UIHPM.bat is missing
@@ -63,12 +68,9 @@ if exist ./UIHPM.bat (
 	goto failed
 )
 
-@rem result handler
+@rem exception handler
 :failed
 echo --------------------------------------------------------------------------->>%log_error.txt%
 net use %driver% /d /y
 exit
-:successed
-echo --------------------------------------------------------------------------->>%log.txt%
-net use %driver% /d /y
-exit
+

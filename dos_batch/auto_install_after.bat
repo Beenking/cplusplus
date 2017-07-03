@@ -1,12 +1,12 @@
 @echo on
 setlocal enabledelayedexpansion
 set log.txt=C:\\auto_install_after_log.txt
-set log_error.txt=C:\\auto_install_after_error.txt
-set date_time=%date:~0,10%%time:~0,8%
+set date_time=%date:~0,10% %time:~0,8%
 
 @rem step1: change default modality
 echo %date_time% : step1- change default modality...>>%log.txt%
 set file=D:\\UIH\appdata\user_settings\default\config\service\ServiceSite.xml
+@rem set file=D:\\ServiceSite.xml
 if not exist %file% (
     echo %date_time% : faild- %file% missing...>>%log.txt%
     goto step2
@@ -19,6 +19,7 @@ for /f "delims=" %%i in ('type "%file%"') do (
 	set "str=!str:%replaced%=%replacing%!"
 	echo !str!>>%file%_tmp.txt
 )
+copy "%file%" "%file%"_bak >nul 2>nul
 move "%file%"_tmp.txt "%file%"
 echo %date_time% : sucessed- %file% current modality is %replacing%...>>%log.txt%
 
@@ -30,7 +31,7 @@ set importer=D:\\UIH\bin\McsfDicomDBImporterTool.exe
 set images="E:\\dicom data\Vessel137"
 
 if not exist %importer% (
-    echo %date_time% : faild- %file% missing...>>%log.txt%
+    echo %date_time% : faild- %importer% missing...>>%log.txt%
     goto step3
 )
 %importer% %images%
