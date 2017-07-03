@@ -3,7 +3,7 @@
 set driver=X:
 set log.txt=C:\\auto_install_log.txt
 set log_error.txt=C:\\auto_install_error.txt
-set uideal_package_output_remote=\\127.0.0.1\SharedDir
+set uideal_package_output_remote=\\10.6.4.5\SW_Publish\UIDeal_BuildOutput
 set date_time=%date:~0,10%%time:~0,8%
 
 @rem exit if remote path not found
