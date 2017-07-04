@@ -1,0 +1,1 @@
+SCHTASKS /RUN /TN UIHAutoInstall

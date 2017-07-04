@@ -21,10 +21,13 @@
     <None Include="auto_install_after.bat">
       <Filter>资源文件</Filter>
     </None>
-    <None Include="auto_install_cancel.bat">
+    <None Include="auto_install_schtasks_apply.bat">
       <Filter>资源文件</Filter>
     </None>
-    <None Include="auto_install_schtasks.bat">
+    <None Include="auto_install_schtasks_cancel.bat">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="auto_install_schtasks_excute.bat">
       <Filter>资源文件</Filter>
     </None>
   </ItemGroup>
@@ -33,6 +36,9 @@
       <Filter>资源文件</Filter>
     </Xml>
     <Xml Include="auto_install_after.xml">
+      <Filter>资源文件</Filter>
+    </Xml>
+    <Xml Include="auto_install_config.xml">
       <Filter>资源文件</Filter>
     </Xml>
   </ItemGroup>

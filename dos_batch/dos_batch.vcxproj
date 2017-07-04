@@ -112,12 +112,16 @@
   <ItemGroup>
     <None Include="auto_install.bat" />
     <None Include="auto_install_after.bat" />
-    <None Include="auto_install_cancel.bat" />
-    <None Include="auto_install_schtasks.bat" />
+    <None Include="auto_install_schtasks_cancel.bat" />
+    <None Include="auto_install_schtasks_apply.bat" />
+    <None Include="auto_install_schtasks_excute.bat" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="auto_install.xml" />
-    <Xml Include="auto_install_after.xml" />
+    <Xml Include="auto_install_after.xml">
+      <SubType>Designer</SubType>
+    </Xml>
+    <Xml Include="auto_install_config.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

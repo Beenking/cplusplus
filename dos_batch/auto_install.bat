@@ -53,11 +53,11 @@ set uideal_package_output_remote_package_file=%uideal_package_output_remote%\%to
 echo %date_time% : installing remote package path is %uideal_package_output_remote_package_file%>>%log.txt%
 
 @rem install package use UIHPM.bat
-%~d0
-cd %~p0
-if exist ./UIHPM.bat (
+D:
+cd UIHPM
+if exist UIHPM.bat (
     echo %date_time% : starting install package...>>%log.txt%
-    UIHPM i dev %uideal_package_output_remote_package_file%
+    @rem UIHPM i dev %uideal_package_output_remote_package_file%
     echo install package successed.
     echo %date_time% : %install_package% install succssed>>%log.txt%
     echo --------------------------------------------------------------------------->>%log.txt%
@@ -65,8 +65,8 @@ if exist ./UIHPM.bat (
     exit
     
 ) else (
-    echo %date_time% : UIHPM.bat is missing
-    echo %date_time% : UIHPM.bat is missing>>%log_error.txt%
+    echo %date_time% : D:\\UIHPM\UIHPM.bat is missing
+    echo %date_time% : D:\\UIHPM\UIHPM.bat is missing>>%log_error.txt%
 	goto failed
 )
 
