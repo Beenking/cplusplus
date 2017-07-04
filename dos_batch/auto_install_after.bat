@@ -1,7 +1,12 @@
-@echo on
+@rem modify files.xml and import images automaticlly
+@echo off
 setlocal enabledelayedexpansion
-set log.txt=C:\\auto_install_after_log.txt
 set date_time=%date:~0,10% %time:~0,8%
+
+@rem get parameters
+set replaces=%1
+set importImages=%2
+set log.txt=%3
 
 @rem step1: change default modality
 echo %date_time% : step1- change default modality...>>%log.txt%
@@ -28,12 +33,12 @@ echo %date_time% : sucessed- %file% current modality is %replacing%...>>%log.txt
 echo --------------------------------------------------------------------->>%log.txt%
 echo %date_time% : step2- importer images to database...>>%log.txt%
 set importer=D:\\UIH\bin\McsfDicomDBImporterTool.exe
-set images="E:\\dicom data\Vessel137"
-
 if not exist %importer% (
     echo %date_time% : faild- %importer% missing...>>%log.txt%
     goto step3
 )
+
+set images="E:\\dicom data\Vessel137"
 %importer% %images%
 
 @rem todo by yourself

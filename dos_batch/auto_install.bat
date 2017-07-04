@@ -2,7 +2,8 @@
 @echo off
 setlocal enabledelayedexpansion
 set date_time=%date:~0,10% %time:~0,8%
-@rem get parameter
+
+@rem get parameters
 set uideal_package_output_remote=%1
 set driver=%2
 set ignoreFailed=%3
