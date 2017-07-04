@@ -1,11 +1,13 @@
 @rem install zhenghe or uideal system from remote automaticlly
 @echo off
 setlocal enabledelayedexpansion
-set driver=X:
-set log.txt=C:\\auto_install_log.txt
-set log_error.txt=C:\\auto_install_error.txt
-set uideal_package_output_remote=\\10.6.4.5\SW_Publish\UIDeal_BuildOutput
 set date_time=%date:~0,10% %time:~0,8%
+@rem get parameter
+set uideal_package_output_remote=%1
+set driver=%2
+set ignoreFailed=%3
+set log.txt=%4
+set log_error.txt=%5
 
 @rem exit if remote path not found
 if not exist %uideal_package_output_remote% (
