@@ -38,9 +38,41 @@ if not exist %importer% (
     goto step3
 )
 
-set images="E:\\dicom data\Vessel137"
-%importer% %images%
+@rem set s=E:\\dicom data\Vessel137;E:\\CTImage\test;D:\\pet image
+set importImages=%importImages:"=%
+set t=%importImages%
+:loop
+for /f "tokens=1* delims=;" %%a in ("%t%") do (
+   if exist "%%a" (
+       %importe% "%%a"
+       echo %date_time% : successed importer- %importer% "%%a">>%log.txt%
+   ) else (
+       echo %date_time% : faild importer- %%a missing...>>%log.txt%
+   )  
+   set t=%%b
+)
+if defined t goto :loop
+
 
 @rem todo by yourself
 :step3
 echo --------------------------------------------------------------------->>%log.txt%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
