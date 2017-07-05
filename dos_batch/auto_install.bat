@@ -17,6 +17,7 @@ if not exist %uideal_package_output_remote% (
 )
 
 @rem today_year_month_day format example: 20170629
+reg add "HKEY_CURRENT_USER\Control Panel\International" /v sShortDate /t REG_SZ /d yyyy/MM/dd /f>nul
 set today_year_month_day=%date:~0,10%
 set today_year_month_day=%today_year_month_day:/=%
 echo installing file contains : %today_year_month_day%

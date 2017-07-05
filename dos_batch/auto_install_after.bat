@@ -25,7 +25,7 @@ for /f "delims=" %%i in ('type "%file%"') do (
 	echo !str!>>%file%_tmp.txt
 )
 copy "%file%" "%file%"_bak >nul 2>nul
-move "%file%"_tmp.txt "%file%"
+@rem move "%file%"_tmp.txt "%file%"
 echo %date_time% : sucessed- %file% current modality is %replacing%...>>%log.txt%
 
 @rem step2: import images to database
