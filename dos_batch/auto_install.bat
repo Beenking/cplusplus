@@ -2,12 +2,14 @@
 @echo off
 setlocal enabledelayedexpansion
 set date_time=%date:~0,10% %time:~0,8%
-set xmlexe=D:\\UIHPM\auto_install\xml.exe
+%~d0
+cd %~p0
+set xmlexe=xml.exe
 if not exist "%xmlexe%" (
     echo %date_time% : %xmlexe% not found>>auto_error.txt
     goto failed
 )
-set autoInstallConfig=D:\\UIHPM\auto_install\auto_install_config.xml
+set autoInstallConfig=auto_install_config.xml
 if not exist "%autoInstallConfig%" (
     echo %date_time% : %xmlexe% not found>>auto_error.txt
     goto failed
@@ -22,7 +24,7 @@ for /f "delims=" %%i in ('%xmlexe% sel -t -v "//InstallLog" %autoInstallConfig%'
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//InstallError" %autoInstallConfig%') do ( set log_error.txt=%%i)
 
 @rem exit if remote path not found
-if not exist %uideal_package_output_remote% (
+if not exist "%uideal_package_output_remote%" (
     echo %date_time% : remote path %uideal_package_output_remote% not found, please check network>>%log_error.txt%
     goto failed
 )
@@ -47,9 +49,9 @@ net use %driver%  %uideal_package_output_remote%
 cd %today_year_month%
 
 @rem get latest install package
-@rem %driver%\%today_year_month%\
 set install_package=empty
-for %%i in (*%today_year_month_day%*.exe) do (
+if /i %ignoreFailed%==true ( set status=) else set status=*
+for %%i in (*%today_year_month_day%%status%.exe) do (
     if %%i GTR !install_package! (
         set install_package=%%i
     )
