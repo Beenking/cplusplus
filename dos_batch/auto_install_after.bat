@@ -22,12 +22,12 @@ for /f "delims=" %%i in ('%xmlexe% sel -t -v "//DicomImages" %autoInstallConfig%
         set ImportImages=%%i
     )
 )
-set ImportImages='%ImportImages%'
+@rem set ImportImages='%ImportImages%'
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//AfterLog " %autoInstallConfig%') do ( set log.txt=%%i)
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//AutoDeleteLast" %autoInstallConfig%') do ( set autoDel=%%i)
 
 @rem step1: change default modality
-echo %date_time% : step1- change default modality...>>%log.txt%
+echo %date_time% : step1- change default xml file...>>%log.txt%
 set file=D:\\UIH\appdata\user_settings\default\config\service\ServiceSite.xml
 @rem set file=D:\\ServiceSite.xml
 if not exist %file% (
@@ -56,8 +56,7 @@ if not exist %importer% (
     goto step3
 )
 
-@rem set s=E:\\dicom data\Vessel137;E:\\CTImage\test;D:\\pet image
-set importImages=%importImages:"=%
+@rem set importImages=%importImages:"=%
 set t=%importImages%
 :loop
 for /f "tokens=1* delims=;" %%a in ("%t%") do (
@@ -65,7 +64,7 @@ for /f "tokens=1* delims=;" %%a in ("%t%") do (
        %importe% "%%a"
        echo %date_time% : successed importer- %importer% "%%a">>%log.txt%
    ) else (
-       echo %date_time% : faild importer- %%a missing...>>%log.txt%
+       echo %date_time% : faild importer- "%%a" missing...>>%log.txt%
    )  
    set t=%%b
 )
