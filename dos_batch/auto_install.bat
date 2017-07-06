@@ -9,6 +9,7 @@ set driver=%2
 set ignoreFailed=%3
 set log.txt=%4
 set log_error.txt=%5
+set log_uih.txt=%6
 
 @rem exit if remote path not found
 if not exist %uideal_package_output_remote% (
@@ -59,7 +60,7 @@ D:
 cd UIHPM
 if exist UIHPM.bat (
     echo %date_time% : starting install package...>>%log.txt%
-    @rem UIHPM i dev %uideal_package_output_remote_package_file%
+    UIHPM i dev %uideal_package_output_remote_package_file%>>%log_uih.txt%
     echo install package successed.
     echo %date_time% : %install_package% install succssed>>%log.txt%
     echo --------------------------------------------------------------------------->>%log.txt%
