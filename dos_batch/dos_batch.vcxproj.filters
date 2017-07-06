@@ -30,6 +30,9 @@
     <None Include="auto_install_schtasks_excute.bat">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="xml.exe">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="auto_install.xml">
