@@ -2,12 +2,14 @@
 @echo off
 setlocal enabledelayedexpansion
 set date_time=%date:~0,10% %time:~0,8%
-set xmlexe=D:\\UIHPM\auto_install\xml.exe
+%~d0
+cd %~p0
+set xmlexe=xml.exe
 if not exist "%xmlexe%" (
     echo %date_time% : %xmlexe% not found>>auto_error.txt
     goto failed
 )
-set autoInstallConfig=D:\\UIHPM\auto_install\auto_install_config.xml
+set autoInstallConfig=auto_install_config.xml
 if not exist "%autoInstallConfig%" (
     echo %date_time% : %xmlexe% not found>>auto_error.txt
     goto failed
