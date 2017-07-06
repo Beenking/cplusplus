@@ -40,7 +40,7 @@ for /L %%i in (1,1,%ReplaceNum%) do (
         type "!file!_bak" | xml ed -u "!location!" -v !dst! "!file!_bak">!file!
         echo %date_time% : successed change- !file! !location! !dst! >>%log.txt%
     ) else (
-        echo %date_time% : !file! is missing...
+        echo %date_time% : faild changed- !file! is missing...>>%log.txt%
     )
 )
 
