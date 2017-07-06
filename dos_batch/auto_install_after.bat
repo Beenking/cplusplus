@@ -24,11 +24,11 @@ for /f "delims=" %%i in ('%xmlexe% sel -t -v "//DicomImages" %autoInstallConfig%
         set ImportImages=%%i
     )
 )
-@rem set ImportImages='%ImportImages%'
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//AfterLog " %autoInstallConfig%') do ( set log.txt=%%i)
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//AutoDeleteLast" %autoInstallConfig%') do ( set autoDel=%%i)
 
-@rem step1: change default modality
+@rem step1: change default file.xml value
+:step1
 echo %date_time% : step1- change default xml file...>>%log.txt%
 set file=D:\\UIH\appdata\user_settings\default\config\service\ServiceSite.xml
 @rem set file=D:\\ServiceSite.xml
