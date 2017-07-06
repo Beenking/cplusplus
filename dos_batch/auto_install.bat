@@ -15,6 +15,7 @@ if not exist "%autoInstallConfig%" (
 
 @rem get parameters from config.xml by xml.exe
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//RemotePackagePath" %autoInstallConfig%') do ( set uideal_package_output_remote=%%i)
+for /f "delims=" %%i in ('%xmlexe% sel -t -v "//BuildConfig" %autoInstallConfig%') do ( set build_config=%%i)
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//MappingLocalDriver" %autoInstallConfig%') do ( set driver=%%i)
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//IgnoreFailedPackage" %autoInstallConfig%') do ( set ignoreFailed=%%i)
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//InstallLog" %autoInstallConfig%') do ( set log.txt=%%i)
@@ -73,18 +74,18 @@ if exist UIHPM.bat (
     echo %date_time% : starting install package...>>%log.txt%
     echo.>>%log.txt%
     echo ...................................UIHPM LOG START...............................>>%log.txt%
-    UIHPM i dev %uideal_package_output_remote_package_file%>>%log.txt%
+    if /i %build_config%==Release ( set type= ) else set type=dev
+    echo UIHPM i !type! %uideal_package_output_remote_package_file%>>%log.txt%
     echo ...................................UIHPM LOG END.................................>>%log.txt%
     echo.>>%log.txt%
     echo %date_time% : %install_package% install succssed>>%log.txt%
     echo --------------------------------------------------------------------------->>%log.txt%
     net use %driver% /d /y
     exit
-    
 ) else (
     echo %date_time% : D:\\UIHPM\UIHPM.bat is missing
     echo %date_time% : D:\\UIHPM\UIHPM.bat is missing>>%log_error.txt%
-	goto failed
+    goto failed
 )
 
 @rem exception handler
