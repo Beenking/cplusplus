@@ -2,14 +2,25 @@
 @echo off
 setlocal enabledelayedexpansion
 set date_time=%date:~0,10% %time:~0,8%
+set xmlexe=D:\\UIHPM\auto_install\xml.exe
+if not exist "%xmlexe%" (
+    echo %date_time% : %xmlexe% not found>>auto_error.txt
+    goto failed
+)
+set autoInstallConfig=D:\\UIHPM\auto_install\auto_install_config.xml
+if not exist "%autoInstallConfig%" (
+    echo %date_time% : %xmlexe% not found>>auto_error.txt
+    goto failed
+)
 
-@rem get parameters
-set uideal_package_output_remote=%1
-set driver=%2
-set ignoreFailed=%3
-set log.txt=%4
-set log_error.txt=%5
-set log_uih.txt=%6
+
+@rem get parameters from config.xml by xml.exe
+for /f "delims=" %%i in ('%xmlexe% sel -t -v "//RemotePackagePath" %autoInstallConfig%') do ( set uideal_package_output_remote=%%i)
+for /f "delims=" %%i in ('%xmlexe% sel -t -v "//MappingLocalDriver" %autoInstallConfig%') do ( set driver=%%i)
+for /f "delims=" %%i in ('%xmlexe% sel -t -v "//IgnoreFailedPackage" %autoInstallConfig%') do ( set ignoreFailed=%%i)
+for /f "delims=" %%i in ('%xmlexe% sel -t -v "//InstallLog" %autoInstallConfig%') do ( set log.txt=%%i)
+for /f "delims=" %%i in ('%xmlexe% sel -t -v "//InstallError" %autoInstallConfig%') do ( set log_error.txt=%%i)
+
 
 @rem exit if remote path not found
 if not exist %uideal_package_output_remote% (
@@ -57,11 +68,12 @@ echo %date_time% : installing remote package path is %uideal_package_output_remo
 
 @rem install package use UIHPM.bat
 D:
-cd UIHPM
+cd D:\\UIHPM
 if exist UIHPM.bat (
     echo %date_time% : starting install package...>>%log.txt%
-    UIHPM i dev %uideal_package_output_remote_package_file%>>%log_uih.txt%
-    echo install package successed.
+    echo ...................................UIHPM LOG START...............................>>%log.txt%
+    UIHPM i dev %uideal_package_output_remote_package_file%>>%log.txt%
+    echo ...................................UIHPM LOG END.................................>>%log.txt%
     echo %date_time% : %install_package% install succssed>>%log.txt%
     echo --------------------------------------------------------------------------->>%log.txt%
     net use %driver% /d /y
