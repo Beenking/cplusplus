@@ -59,7 +59,7 @@ set t=%importImages%
 :loop
 for /f "tokens=1* delims=;" %%a in ("%t%") do (
    if exist "%%a" (
-       %importe% "%%a"
+       %importer% "%%a"
        echo %date_time% : successed importer- %importer% "%%a">>%log.txt%
    ) else (
        echo %date_time% : faild importer- "%%a" missing...>>%log.txt%
