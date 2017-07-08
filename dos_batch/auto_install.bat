@@ -20,12 +20,19 @@ if not exist "%autoInstallConfig%" (
 )
 
 @rem get parameters from config.xml by xml.exe
+for /f "delims=" %%i in ('%xmlexe% sel -t -v "//AutoLogOff" %autoInstallConfig%') do ( set autoLogoff=%%i)
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//RemotePackagePath" %autoInstallConfig%') do ( set uideal_package_output_remote=%%i)
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//BuildConfig" %autoInstallConfig%') do ( set build_config=%%i)
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//MappingLocalDriver" %autoInstallConfig%') do ( set driver=%%i)
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//IgnoreFailedPackage" %autoInstallConfig%') do ( set ignoreFailed=%%i)
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//InstallLog" %autoInstallConfig%') do ( set log.txt=%%i)
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//InstallError" %autoInstallConfig%') do ( set log_error.txt=%%i)
+
+@rem logoff current user
+if /i %autoLogoff%==true (
+    echo %date_time% : logoff user session before auto install...>>%log.txt%
+    logoff console
+)
 
 @rem exit if remote path not found
 if not exist "%uideal_package_output_remote%" (
