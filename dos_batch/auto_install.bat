@@ -1,5 +1,9 @@
 @rem install zhenghe or uideal system from remote automaticlly
 @echo off
+taskkill /f /im devenv.exe
+taskkill /f /im notepad*
+
+@rem read config.xml file
 setlocal enabledelayedexpansion
 set date_time=%date:~0,10% %time:~0,8%
 %~d0
