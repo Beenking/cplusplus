@@ -29,11 +29,9 @@ for /f "delims=" %%i in ('%xmlexe% sel -t -v "//InstallError" %autoInstallConfig
 
 @rem logoff current user
 set autoLogoff=%1
-if defined autoLogoff (
-    if /i %autoLogoff%==true (
-        echo %date_time% : logoff user session before auto install...>>%log.txt%
-        logoff console
-    )
+if /i "%autoLogoff%"=="true" (
+    echo %date_time% : logoff user session before auto install...>>%log.txt%
+    logoff console
 )
 
 @rem exit if remote path not found
