@@ -32,6 +32,9 @@ set autoLogoff=%1
 if /i "%autoLogoff%"=="true" (
     echo %date_time% : logoff user session before auto install...>>%log.txt%
     logoff console
+) else (
+    taskkill /f /im explorer.exe
+    start C:\Windows\explorer.exe
 )
 
 @rem exit if remote path not found
@@ -89,7 +92,7 @@ if exist UIHPM.bat (
     echo ...................................UIHPM LOG START...............................>>%log.txt%
     if /i %build_config%==Release ( set type= ) else set type=dev
     echo UIHPM i !type! %uideal_package_output_remote_package_file%>>%log.txt%
-    UIHPM i !type! %uideal_package_output_remote_package_file%>>%log.txt%
+    echo UIHPM i !type! %uideal_package_output_remote_package_file%>>%log.txt%
     echo ...................................UIHPM LOG END.................................>>%log.txt%
     echo.>>%log.txt%
     echo %date_time% : %install_package% install succssed>>%log.txt%
