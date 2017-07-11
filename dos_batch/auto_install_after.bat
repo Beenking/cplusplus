@@ -30,11 +30,11 @@ for /f "delims=" %%n in ('xml sel -t -v "count(/AutoInstall/AfterInstall/Replace
 for /L %%i in (1,1,%ReplaceNum%) do (
     for /f "delims=" %%u in ('xml sel -t -v "//File[%%i]" %configFile%') do set file=%%u
     for /f "delims=" %%v in ('xml sel -t -v "//XmlLocation[%%i]" %configFile%') do set location=%%v
-    for /f "delims=" %%w in ('xml sel -t -v "//Dst[%%i]" %configFile%') do set dst=%%w
+    for /f "delims=" %%w in ('xml sel -t -v "//Value[%%i]" %configFile%') do set value=%%w
     if exist "!file!" ( 
         copy "!file!" "!file!_bak" >nul 2>nul
-        xml ed -u "!location!" -v !dst! "!file!_bak">!file!
-        echo %date_time% : successed change- !file! !location! !dst! >>%log.txt%
+        xml ed -u "!location!" -v !value! "!file!_bak">!file!
+        echo %date_time% : successed change- !file! !location! !value! >>%log.txt%
     ) else (
         echo %date_time% : faild changed- !file! is missing...>>%log.txt%
     )
