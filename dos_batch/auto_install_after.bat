@@ -18,16 +18,10 @@ if not exist "%configFile%" (
 )
 
 @rem get parameters from config.xml by xml.exe
-set ImportImages=
-for /f "delims=" %%i in ('%xmlexe% sel -t -v "//DicomImages" %configFile%') do (
-    if defined ImportImages (
-        set ImportImages=!ImportImages!;%%i
-    ) else (
-        set ImportImages=%%i
-    )
-)
-for /f "delims=" %%i in ('%xmlexe% sel -t -v "//AfterLog " %configFile%') do ( set log.txt=%%i)
-for /f "delims=" %%i in ('%xmlexe% sel -t -v "//AutoDeleteLast" %configFile%') do ( set autoDel=%%i)
+for /f "delims=" %%i in ('xml sel -t -v "//AfterLog " %configFile%') do ( set log.txt=%%i)
+for /f "delims=" %%i in ('xml sel -t -v "//AutoDeleteLast" %configFile%') do ( set autoDel=%%i)
+for /f "delims=" %%i in ('xml sel -t -v "//DBImporter/@exe" %configFile%') do ( set importer=%%i)
+if exist "%log.txt%" del %log.txt%
 
 @rem step1: change default file.xml value
 :step1
@@ -39,7 +33,7 @@ for /L %%i in (1,1,%ReplaceNum%) do (
     for /f "delims=" %%w in ('xml sel -t -v "//Dst[%%i]" %configFile%') do set dst=%%w
     if exist "!file!" ( 
         copy "!file!" "!file!_bak" >nul 2>nul
-        type "!file!_bak" | xml ed -u "!location!" -v !dst! "!file!_bak">!file!
+        xml ed -u "!location!" -v !dst! "!file!_bak">!file!
         echo %date_time% : successed change- !file! !location! !dst! >>%log.txt%
     ) else (
         echo %date_time% : faild changed- !file! is missing...>>%log.txt%
@@ -50,28 +44,20 @@ for /L %%i in (1,1,%ReplaceNum%) do (
 :step2
 echo --------------------------------------------------------------------->>%log.txt%
 echo %date_time% : step2- importer images to database...>>%log.txt%
-set importer=D:\\UIH\bin\McsfDicomDBImporterTool.exe
-if not exist %importer% (
+if not exist "%importer%" (
     echo %date_time% : faild- %importer% missing...>>%log.txt%
     goto step3
 )
-
-@rem set importImages=%importImages:"=%
-set t=%importImages%
-:loop
-for /f "tokens=1* delims=;" %%a in ("%t%") do (
-   if exist "%%a" (
-       %importer% "%%a"
-       echo %date_time% : successed importer- %importer% "%%a">>%log.txt%
+for /f "delims=" %%i in ('xml sel -t -v "//DicomImages" %configFile%') do (
+    if exist "%%i" (
+       %importer% "%%i"
+       echo %date_time% : successed importer- %importer% "%%i">>%log.txt%
    ) else (
-       echo %date_time% : faild importer- "%%a" missing...>>%log.txt%
-   )  
-   set t=%%b
+       echo %date_time% : faild importer- "%%i" missing...>>%log.txt%
+   )
 )
-if defined t goto :loop
 
-
-@rem todo by yourself
+@rem step3: todo by yourself
 :step3
 echo --------------------------------------------------------------------->>%log.txt%
 
