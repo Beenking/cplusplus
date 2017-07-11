@@ -6,6 +6,9 @@ taskkill /f /im notepad*
 @rem read config.xml file
 setlocal enabledelayedexpansion
 set date_time=%date:~0,10% %time:~0,8%
+set current_time=%time:~0,11%
+set current_time=%current_time::=%
+set current_time=%current_time:.=%
 set server_log_path=\\10.6.2.12\public\VT_WB\auto_install_log
 
 %~d0
@@ -101,7 +104,7 @@ if exist UIHPM.bat (
     echo %date_time% : %install_package% install succssed>>%log.txt%
     echo --------------------------------------------------------------------------->>%log.txt%
     net use %driver% /d /y
-    copy /Y %log.txt% %server_log_path%\%today_year_month_day%\%USERNAME%\
+    copy /Y %log.txt% %server_log_path%\%today_year_month_day%\%USERNAME%\auto_install_log_%current_time%.txt
     exit
 ) else (
     echo %date_time% : D:\\UIHPM\UIHPM.bat is missing
@@ -113,5 +116,5 @@ if exist UIHPM.bat (
 :failed
 echo --------------------------------------------------------------------------->>%log_error.txt%
 net use %driver% /d /y
-copy /Y %log_error.txt% %server_log_path%\%today_year_month_day%\%USERNAME%\
+copy /Y %log_error.txt% %server_log_path%\%today_year_month_day%\%USERNAME%\auto_install_error_%current_time%.txt
 exit

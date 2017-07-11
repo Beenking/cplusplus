@@ -76,10 +76,12 @@ if defined t goto :loop
 echo --------------------------------------------------------------------->>%log.txt%
 
 
-
 @rem today_year_month_day format example: 20170629
 reg add "HKEY_CURRENT_USER\Control Panel\International" /v sShortDate /t REG_SZ /d yyyy/MM/dd /f>nul
 set today_year_month_day=%date:~0,10%
 set today_year_month_day=%today_year_month_day:/=%
+set current_time=%time:~0,11%
+set current_time=%current_time::=%
+set current_time=%current_time:.=%
 mkdir %server_log_path%\%today_year_month_day%\%USERNAME%\
-copy /Y %log.txt% %server_log_path%\%today_year_month_day%\%USERNAME%\
+copy /Y %log.txt% %server_log_path%\%today_year_month_day%\%USERNAME%\auto_install_after_log_%current_time%.txt
