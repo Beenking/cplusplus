@@ -19,7 +19,7 @@ if not exist "%configFile%" (
 
 @rem get parameters from config.xml by xml.exe
 for /f "delims=" %%i in ('xml sel -t -v "//AfterLog " %configFile%') do ( set log.txt=%%i)
-for /f "delims=" %%i in ('xml sel -t -v "//AutoDeleteLast" %configFile%') do ( set autoDel=%%i)
+for /f "delims=" %%i in ('xml sel -t -v "//DeleteOldest" %configFile%') do ( set autoDel=%%i)
 for /f "delims=" %%i in ('xml sel -t -v "//DBImporter/@exe" %configFile%') do ( set importer=%%i)
 if exist "%log.txt%" del %log.txt%
 
@@ -57,8 +57,26 @@ for /f "delims=" %%i in ('xml sel -t -v "//DicomImages" %configFile%') do (
    )
 )
 
-@rem step3: todo by yourself
+@rem step3: auto delete oldest package
 :step3
+echo --------------------------------------------------------------------->>%log.txt%
+echo %date_time% : step3- auto delete oldest package...>>%log.txt%
+D:
+cd D:\\UIHPM
+if /i "%autoDel%"=="true" (
+    for /f "tokens=1,2,3 delims= " %%i in ('UIHPM L') do (
+        echo %%i---%%j---%%k
+        for /f "tokens=1 delims=." %%x in ("%%k") do (
+            echo %%x
+        )
+    )
+)
+
+
+
+
+@rem step4: todo by yourself
+:step4
 echo --------------------------------------------------------------------->>%log.txt%
 
 
