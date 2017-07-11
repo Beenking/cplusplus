@@ -1,7 +1,5 @@
 @rem install zhenghe or uideal system from remote automaticlly
 @echo off
-taskkill /f /im devenv.exe
-taskkill /f /im notepad*
 
 @rem read config.xml file
 setlocal enabledelayedexpansion
@@ -25,6 +23,7 @@ if not exist "%autoInstallConfig%" (
 )
 
 @rem get parameters from config.xml by xml.exe
+for /f "delims=" %%i in ('%xmlexe% sel -t -v "//KillTask" %autoInstallConfig%') do ( set kill_tasks=%%i)
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//RemotePackagePath" %autoInstallConfig%') do ( set uideal_package_output_remote=%%i)
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//BuildConfig" %autoInstallConfig%') do ( set build_config=%%i)
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//MappingLocalDriver" %autoInstallConfig%') do ( set driver=%%i)
@@ -32,14 +31,19 @@ for /f "delims=" %%i in ('%xmlexe% sel -t -v "//IgnoreFailedPackage" %autoInstal
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//InstallLog" %autoInstallConfig%') do ( set log.txt=%%i)
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//InstallError" %autoInstallConfig%') do ( set log_error.txt=%%i)
 
-@rem logoff current user
+@rem kill tasks if true
+if /i "%kill_tasks%"=="true" (
+    taskkill /f /im devenv.exe
+    taskkill /f /im notepad*
+    taskkill /f /im UIH*
+    taskkill /f /im Mcsf*
+)
+
+@rem logoff current user if true
 set autoLogoff=%1
 if /i "%autoLogoff%"=="true" (
     echo %date_time% : logoff user session before auto install...>>%log.txt%
     logoff console
-) else (
-    taskkill /f /im explorer.exe
-    start C:\Windows\explorer.exe
 )
 
 @rem exit if remote path not found
@@ -70,7 +74,7 @@ cd %today_year_month%
 
 @rem get latest install package
 set install_package=empty
-if /i %ignoreFailed%==true ( set status=) else set status=*
+if /i "%ignoreFailed%"=="true" ( set status=) else set status=*
 for %%i in (*%today_year_month_day%%status%.exe) do (
     if %%i GTR !install_package! (
         set install_package=%%i
@@ -96,7 +100,7 @@ if exist UIHPM.bat (
     echo %date_time% : starting install package...>>%log.txt%
     echo.>>%log.txt%
     echo ...................................UIHPM LOG START...............................>>%log.txt%
-    if /i %build_config%==Release ( set type= ) else set type=dev
+    if /i "%build_config%"=="release" ( set type= ) else set type=dev
     echo UIHPM i !type! %uideal_package_output_remote_package_file%>>%log.txt%
     echo UIHPM i !type! %uideal_package_output_remote_package_file%>>%log.txt%
     echo ...................................UIHPM LOG END.................................>>%log.txt%
