@@ -31,6 +31,10 @@ for /f "delims=" %%i in ('%xmlexe% sel -t -v "//IgnoreFailedPackage" %autoInstal
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//InstallLog" %autoInstallConfig%') do ( set log.txt=%%i)
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//InstallError" %autoInstallConfig%') do ( set log_error.txt=%%i)
 
+@rem remvoe log files if exist
+if exist "%log.txt%" del %log.txt%
+if exist "%log_error.txt%" del %log_error.txt%
+
 @rem kill tasks if true
 if /i "%kill_tasks%"=="true" (
     taskkill /f /im devenv.exe
