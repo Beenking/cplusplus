@@ -6,17 +6,19 @@ taskkill /f /im notepad*
 @rem read config.xml file
 setlocal enabledelayedexpansion
 set date_time=%date:~0,10% %time:~0,8%
+set server_log_path=\\10.6.2.12\public\VT_WB\auto_install_log
+
 %~d0
 cd %~p0
 set xmlexe=xml.exe
 if not exist "%xmlexe%" (
     echo %date_time% : %xmlexe% not found>>auto_error.txt
-    goto failed
+    exit
 )
 set autoInstallConfig=auto_install_config.xml
 if not exist "%autoInstallConfig%" (
     echo %date_time% : %xmlexe% not found>>auto_error.txt
-    goto failed
+    exit
 )
 
 @rem get parameters from config.xml by xml.exe
@@ -48,6 +50,7 @@ reg add "HKEY_CURRENT_USER\Control Panel\International" /v sShortDate /t REG_SZ 
 set today_year_month_day=%date:~0,10%
 set today_year_month_day=%today_year_month_day:/=%
 echo installing file contains : %today_year_month_day%
+mkdir %server_log_path%\%today_year_month_day%\%USERNAME%\
 
 @rem today_year_month format example: 2017-06
 set today_year_month=%date:~0,7%
@@ -98,6 +101,7 @@ if exist UIHPM.bat (
     echo %date_time% : %install_package% install succssed>>%log.txt%
     echo --------------------------------------------------------------------------->>%log.txt%
     net use %driver% /d /y
+    copy /Y %log.txt% %server_log_path%\%today_year_month_day%\%USERNAME%\
     exit
 ) else (
     echo %date_time% : D:\\UIHPM\UIHPM.bat is missing
@@ -109,5 +113,5 @@ if exist UIHPM.bat (
 :failed
 echo --------------------------------------------------------------------------->>%log_error.txt%
 net use %driver% /d /y
+copy /Y %log_error.txt% %server_log_path%\%today_year_month_day%\%USERNAME%\
 exit
-

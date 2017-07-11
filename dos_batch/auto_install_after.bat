@@ -2,17 +2,19 @@
 @echo off
 setlocal enabledelayedexpansion
 set date_time=%date:~0,10% %time:~0,8%
+set server_log_path=\\10.6.2.12\public\VT_WB\auto_install_log
+
 %~d0
 cd %~p0
 set xmlexe=xml.exe
 if not exist "%xmlexe%" (
     echo %date_time% : %xmlexe% not found>>auto_error.txt
-    goto failed
+    exit
 )
 set configFile=auto_install_config.xml
 if not exist "%configFile%" (
     echo %date_time% : %xmlexe% not found>>auto_error.txt
-    goto failed
+    exit
 )
 
 @rem get parameters from config.xml by xml.exe
@@ -75,4 +77,9 @@ echo --------------------------------------------------------------------->>%log
 
 
 
-
+@rem today_year_month_day format example: 20170629
+reg add "HKEY_CURRENT_USER\Control Panel\International" /v sShortDate /t REG_SZ /d yyyy/MM/dd /f>nul
+set today_year_month_day=%date:~0,10%
+set today_year_month_day=%today_year_month_day:/=%
+mkdir %server_log_path%\%today_year_month_day%\%USERNAME%\
+copy /Y %log.txt% %server_log_path%\%today_year_month_day%\%USERNAME%\
