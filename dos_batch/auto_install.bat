@@ -105,7 +105,7 @@ if exist UIHPM.bat (
     echo.>>%log.txt%
     echo ...................................UIHPM LOG START...............................>>%log.txt%
     if /i "%build_config%"=="release" ( set type= ) else set type=dev
-    echo UIHPM i !type! %uideal_package_output_remote_package_file%>>%log.txt%
+    UIHPM i !type! %uideal_package_output_remote_package_file%>>%log.txt%
     echo UIHPM i !type! %uideal_package_output_remote_package_file%>>%log.txt%
     echo ...................................UIHPM LOG END.................................>>%log.txt%
     echo.>>%log.txt%

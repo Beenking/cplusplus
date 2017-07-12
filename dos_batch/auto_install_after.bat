@@ -44,6 +44,7 @@ for /L %%i in (1,1,%ReplaceNum%) do (
 :step2
 echo --------------------------------------------------------------------->>%log.txt%
 echo %date_time% : step2- importer images to database...>>%log.txt%
+chcp 65001
 if not exist "%importer%" (
     echo %date_time% : faild- %importer% missing...>>%log.txt%
     goto step3
@@ -60,7 +61,7 @@ for /f "delims=" %%i in ('xml sel -t -v "//DicomImages" %configFile%') do (
 @rem step3: auto delete oldest package
 :step3
 echo --------------------------------------------------------------------->>%log.txt%
-echo %date_time% : step3- auto delete oldest package...>>%log.txt%
+echo %date_time% : todo step3- auto delete oldest package...>>%log.txt%
 D:
 cd D:\\UIHPM
 if /i "%autoDel%"=="true" (
@@ -87,5 +88,6 @@ set today_year_month_day=%today_year_month_day:/=%
 set current_time=%time:~0,11%
 set current_time=%current_time::=%
 set current_time=%current_time:.=%
+set current_time=%current_time: =%
 mkdir %server_log_path%\%today_year_month_day%\%USERNAME%\
 copy /Y %log.txt% %server_log_path%\%today_year_month_day%\%USERNAME%\auto_install_after_log_%current_time%.txt
