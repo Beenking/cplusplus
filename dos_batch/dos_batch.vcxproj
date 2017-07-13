@@ -114,6 +114,7 @@
     <None Include="auto_install_after.bat" />
     <None Include="auto_install_schtasks_cancel.bat" />
     <None Include="auto_install_schtasks_apply.bat" />
+    <None Include="auto_install_updater.bat" />
     <None Include="xml.exe" />
   </ItemGroup>
   <ItemGroup>
