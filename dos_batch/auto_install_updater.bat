@@ -23,12 +23,16 @@ if not "%local_verion%" equ "%server_verion%" (
     for /f "delims=" %%i in ('xml el -u %configFile%') do ( set local_xml_element=!local_xml_element!;%%i)
     echo !local_xml_element!
     for /f "delims=" %%i in ('xml el -u %auto_install_server%%configFile%') do ( 
-        echo local_xml_element | find "%i%"
-        if %errorleve%==1 (
-            echo %%i
-			pause
-		)
+        echo !local_xml_element! | find "%%i"
+        if !errorlevel!==1 (
+            set addXpath=%%i
+        )
+    )  
+    echo !addXpath!
+    for /f "delims=/" %%j in ("!addXpath!") do (
+        echo %%j
+        pause
     )
-    
     @rem copy /Y %auto_install_server%auto_install_updater.bat .\
 )
+
