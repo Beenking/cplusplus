@@ -7,6 +7,7 @@ set date_time=%date:~0,10% %time:~0,8%
 set current_time=%time:~0,11%
 set current_time=%current_time::=%
 set current_time=%current_time:.=%
+set current_time=%current_time: =%
 set server_log_path=\\10.6.2.12\public\VT_WB\auto_install_log
 
 %~d0
