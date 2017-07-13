@@ -106,14 +106,15 @@ if exist UIHPM.bat (
     echo.>>%log.txt%
     echo ...................................UIHPM LOG START...............................>>%log.txt%
     if /i "%build_config%"=="release" ( set type= ) else set type=dev
-    UIHPM i !type! %uideal_package_output_remote_package_file%>>%log.txt%
+    echo UIHPM i !type! %uideal_package_output_remote_package_file%>>%log.txt%
     echo UIHPM i !type! %uideal_package_output_remote_package_file%>>%log.txt%
     echo ...................................UIHPM LOG END.................................>>%log.txt%
     echo.>>%log.txt%
     echo %date_time% : %install_package% install succssed>>%log.txt%
     echo --------------------------------------------------------------------------->>%log.txt%
     net use %driver% /d /y
-    copy /Y %log.txt% %server_log_path%\%today_year_month_day%\%USERNAME%\auto_install_log_%current_time%.txt
+    copy /Y "%log.txt%" "%server_log_path%\%today_year_month_day%\%USERNAME%\auto_install_log_%current_time%.txt"
+    copy /Y "%~dp0%autoInstallConfig%" "%server_log_path%\%today_year_month_day%\%USERNAME%\auto_install_config_%current_time%.xml"
     exit
 ) else (
     echo %date_time% : D:\\UIHPM\UIHPM.bat is missing
@@ -125,5 +126,6 @@ if exist UIHPM.bat (
 :failed
 echo --------------------------------------------------------------------------->>%log_error.txt%
 net use %driver% /d /y
-copy /Y %log_error.txt% %server_log_path%\%today_year_month_day%\%USERNAME%\auto_install_error_%current_time%.txt
+copy /Y "%log_error.txt%" "%server_log_path%\%today_year_month_day%\%USERNAME%\auto_install_error_%current_time%.txt"
+copy /Y "%~dp0%autoInstallConfig%" "%server_log_path%\%today_year_month_day%\%USERNAME%\auto_install_config_%current_time%.xml"
 exit

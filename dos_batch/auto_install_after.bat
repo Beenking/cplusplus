@@ -90,4 +90,5 @@ set current_time=%current_time::=%
 set current_time=%current_time:.=%
 set current_time=%current_time: =%
 mkdir %server_log_path%\%today_year_month_day%\%USERNAME%\
-copy /Y %log.txt% %server_log_path%\%today_year_month_day%\%USERNAME%\auto_install_after_log_%current_time%.txt
+copy /Y "%log.txt%" "%server_log_path%\%today_year_month_day%\%USERNAME%\auto_install_after_log_%current_time%.txt"
+copy /Y "%~dp0%configFile%" "%server_log_path%\%today_year_month_day%\%USERNAME%\auto_install_config_after_%current_time%.xml"
