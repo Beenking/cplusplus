@@ -1,12 +1,6 @@
 @rem install zhenghe or uideal system from remote automaticlly
 @echo off
 
-@rem updater auto_install if true
-set autoUpdater=%2
-if /i "%autoUpdater%"=="true" (
-    auto_install_updater.bat
-)
-
 @rem read config.xml file
 setlocal enabledelayedexpansion
 set date_time=%date:~0,10% %time:~0,8%
@@ -25,7 +19,7 @@ if not exist "%xmlexe%" (
 )
 set autoInstallConfig=auto_install_config.xml
 if not exist "%autoInstallConfig%" (
-    echo %date_time% : %xmlexe% not found>>auto_error.txt
+    echo %date_time% : %autoInstallConfig% not found>>auto_error.txt
     exit
 )
 
@@ -121,6 +115,10 @@ if exist UIHPM.bat (
     net use %driver% /d /y
     copy /Y "%log.txt%" "%server_log_path%\%today_year_month_day%\%USERNAME%\auto_install_log_%current_time%.txt"
     copy /Y "%~dp0%autoInstallConfig%" "%server_log_path%\%today_year_month_day%\%USERNAME%\auto_install_config_%current_time%.xml"
+
+    @rem updater auto_install if true
+    set autoUpdater=%2
+    if /i "%autoUpdater%"=="true" ( auto_install_updater.bat )
     exit
 ) else (
     echo %date_time% : D:\\UIHPM\UIHPM.bat is missing
@@ -134,4 +132,7 @@ echo ---------------------------------------------------------------------------
 net use %driver% /d /y
 copy /Y "%log_error.txt%" "%server_log_path%\%today_year_month_day%\%USERNAME%\auto_install_error_%current_time%.txt"
 copy /Y "%~dp0%autoInstallConfig%" "%server_log_path%\%today_year_month_day%\%USERNAME%\auto_install_config_%current_time%.xml"
+@rem updater auto_install if true
+set autoUpdater=%2
+if /i "%autoUpdater%"=="true" ( auto_install_updater.bat )
 exit
