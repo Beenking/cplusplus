@@ -28,9 +28,12 @@ if not exist "auto_install_after.xml" (
 )
 
 set namespace="http://schemas.microsoft.com/windows/2004/02/mit/task"
+
 @rem change auto_install.xml <Arguments> tag by auto_install_config.xml <AutoLogOff> tag
+@rem change auto_install.xml <Arguments> tag by auto_install_config.xml <AutoUpdater> tag
 for /f "delims=" %%i in ('xml sel -t -v "//AutoLogOff" %autoInstallConfig%') do ( set autoLogOff=%%i)
-xml ed -N n=%namespace% -u "//n:Arguments" -v %autoLogOff% "auto_install.xml">auto_install.xml_temp
+for /f "delims=" %%i in ('xml sel -t -v "//AutoUpdater" %autoInstallConfig%') do ( set autoUpdater=%%i)
+xml ed -N n=%namespace% -u "//n:Arguments" -v "%autoLogOff% %autoUpdater%" "auto_install.xml">auto_install.xml_temp
 del /f auto_install.xml
 ren auto_install.xml_temp auto_install.xml
 

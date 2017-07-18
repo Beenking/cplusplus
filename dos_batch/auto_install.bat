@@ -1,6 +1,12 @@
 @rem install zhenghe or uideal system from remote automaticlly
 @echo off
 
+@rem updater auto_install if true
+set autoUpdater=%2
+if /i "%autoUpdater%"=="true" (
+    auto_install_updater.bat
+)
+
 @rem read config.xml file
 setlocal enabledelayedexpansion
 set date_time=%date:~0,10% %time:~0,8%
