@@ -25,6 +25,7 @@ if not exist "%autoInstallConfig%" (
 
 @rem get parameters from config.xml by xml.exe
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//KillTask" %autoInstallConfig%') do ( set kill_tasks=%%i)
+for /f "delims=" %%i in ('%xmlexe% sel -t -v "//AutoUpdater" %autoInstallConfig%') do ( set auto_updater=%%i)
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//RemotePackagePath" %autoInstallConfig%') do ( set uideal_package_output_remote=%%i)
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//BuildConfig" %autoInstallConfig%') do ( set build_config=%%i)
 for /f "delims=" %%i in ('%xmlexe% sel -t -v "//MappingLocalDriver" %autoInstallConfig%') do ( set driver=%%i)
@@ -115,11 +116,7 @@ if exist UIHPM.bat (
     net use %driver% /d /y
     copy /Y "%log.txt%" "%server_log_path%\%today_year_month_day%\%USERNAME%\auto_install_log_%current_time%.txt"
     copy /Y "%~dp0%autoInstallConfig%" "%server_log_path%\%today_year_month_day%\%USERNAME%\auto_install_config_%current_time%.xml"
-
-    @rem updater auto_install if true
-    set autoUpdater=%2
-    if /i "%autoUpdater%"=="true" ( auto_install_updater.bat )
-    exit
+    goto updater
 ) else (
     echo %date_time% : D:\\UIHPM\UIHPM.bat is missing
     echo %date_time% : D:\\UIHPM\UIHPM.bat is missing>>%log_error.txt%
@@ -132,7 +129,10 @@ echo ---------------------------------------------------------------------------
 net use %driver% /d /y
 copy /Y "%log_error.txt%" "%server_log_path%\%today_year_month_day%\%USERNAME%\auto_install_error_%current_time%.txt"
 copy /Y "%~dp0%autoInstallConfig%" "%server_log_path%\%today_year_month_day%\%USERNAME%\auto_install_config_%current_time%.xml"
+
+:updater
 @rem updater auto_install if true
-set autoUpdater=%2
-if /i "%autoUpdater%"=="true" ( auto_install_updater.bat )
+%~d0
+cd %~p0
+if /i "%auto_updater%"=="true" ( "%~dp0auto_install_updater.bat" )
 exit

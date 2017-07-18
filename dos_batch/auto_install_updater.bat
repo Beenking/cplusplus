@@ -12,8 +12,8 @@ if not exist xml.exe (
 )
 
 @rem get parameters from config.xml by xml.exe
-for /f "delims=" %%i in ('xml sel -t -v "//InstallVersion " %configFile%') do ( set local_verion=%%i)
-for /f "delims=" %%i in ('xml sel -t -v "//InstallVersion " %auto_install_server%%configFile%') do ( set server_verion=%%i)
+for /f "delims=" %%i in ('xml sel -t -v "//InstallVersion" %configFile%') do ( set local_verion=%%i)
+for /f "delims=" %%i in ('xml sel -t -v "//InstallVersion" %auto_install_server%%configFile%') do ( set server_verion=%%i)
 
 if not "%local_verion%" equ "%server_verion%" (
     copy /Y %auto_install_server%auto_install.bat .\
