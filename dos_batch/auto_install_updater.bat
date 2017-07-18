@@ -1,7 +1,7 @@
 @rem echo off 
 
 setlocal enabledelayedexpansion
-set auto_install_server=\\127.0.0.1\public\auto_install\
+set auto_install_server=\\10.6.2.12\public\auto_install\
 set configFile=auto_install_config.xml
 if not exist %configFile% (
     copy /Y %auto_install_server%* .\
