@@ -12,14 +12,24 @@ if not exist xml.exe (
 )
 
 @rem get parameters from config.xml by xml.exe
-for /f "delims=" %%i in ('xml sel -t -v "//InstallVersion" %configFile%') do ( set local_verion=%%i)
-for /f "delims=" %%i in ('xml sel -t -v "//InstallVersion" %auto_install_server%%configFile%') do ( set server_verion=%%i)
+for /f "delims=" %%i in ('xml sel -t -v "//InstallVersion" %configFile%') do ( set local_version=%%i)
+for /f "delims=" %%i in ('xml sel -t -v "//InstallVersion" %auto_install_server%%configFile%') do ( set server_version=%%i)
+for /f "delims=" %%i in ('xml sel -t -v "//InstallLog" %configFile%') do ( set log.txt=%%i)
 
-if not "%local_verion%" equ "%server_verion%" (
+if not "%local_version%" equ "%server_version%" (
+    echo auto_install local verison:%local_version% not equ server version %server_version%>>%log.txt%
+    echo updater all bat files to current directory>>%log.txt%
+    
+    @rem modify local config xml version
+    xml ed -u "//InstallVersion" -v "%server_version%" "%configFile%">>"%configFile%_temp"
+    del /f "%configFile%"
+    ren %configFile%_temp %configFile%
+
     copy /Y %auto_install_server%auto_install.bat .\
     copy /Y %auto_install_server%auto_install_after.bat .\
     copy /Y %auto_install_server%auto_install_schtasks* .\
     
+    @rem todo:add elment for xml
     for /f "delims=" %%i in ('xml el -u %configFile%') do ( set local_xml_element=!local_xml_element!;%%i)
     echo !local_xml_element!
     for /f "delims=" %%i in ('xml el -u %auto_install_server%%configFile%') do ( 
