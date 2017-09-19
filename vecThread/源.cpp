@@ -7,6 +7,7 @@ int main()
 {
 	std::mutex mtx;
 	std::vector<std::thread> threads;
+	std::vector<int, std::allocator<int>> vi;
 	for (int i = 0; i < 5; ++i)
 	{
 		threads.push_back(std::thread([&]()  //如果以传值的形式捕获外部变量，lambda 体不允许修改外部变量

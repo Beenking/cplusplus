@@ -22,6 +22,16 @@ public:
 		return ::operator new(size);
 	}
 
+	void* operator new(size_t size, long l, int data)
+	{
+		return malloc(size + l + data);
+	}
+
+	void* operator new(size_t size, void *start)
+	{
+		return start;
+	}
+
 	void* operator new[](size_t size)
 	{
 		std::cout << "custom operator new[]" << std::endl;
@@ -49,5 +59,9 @@ int main()
 	std::cout << sizeof(A) << std::endl;
 	A* pa = new A[2];
 
-	return 0;
+	A*pb = new(1, 2) A();
+
+	A*pc = new(pb) A();
+
+ 	return 0;
 }
