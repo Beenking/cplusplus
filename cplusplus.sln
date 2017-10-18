@@ -52,6 +52,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "decorator_designPattern", "
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "noexception_test", "noexception_test\noexception_test.vcxproj", "{57AECDAE-C93C-454F-B3F5-DD578310E4B3}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "std_move_test", "std_move_test\std_move_test.vcxproj", "{AF623D71-446B-444B-93F8-9F4281B2A294}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -244,6 +246,14 @@ Global
 		{57AECDAE-C93C-454F-B3F5-DD578310E4B3}.Release|x64.Build.0 = Release|x64
 		{57AECDAE-C93C-454F-B3F5-DD578310E4B3}.Release|x86.ActiveCfg = Release|Win32
 		{57AECDAE-C93C-454F-B3F5-DD578310E4B3}.Release|x86.Build.0 = Release|Win32
+		{AF623D71-446B-444B-93F8-9F4281B2A294}.Debug|x64.ActiveCfg = Debug|x64
+		{AF623D71-446B-444B-93F8-9F4281B2A294}.Debug|x64.Build.0 = Debug|x64
+		{AF623D71-446B-444B-93F8-9F4281B2A294}.Debug|x86.ActiveCfg = Debug|Win32
+		{AF623D71-446B-444B-93F8-9F4281B2A294}.Debug|x86.Build.0 = Debug|Win32
+		{AF623D71-446B-444B-93F8-9F4281B2A294}.Release|x64.ActiveCfg = Release|x64
+		{AF623D71-446B-444B-93F8-9F4281B2A294}.Release|x64.Build.0 = Release|x64
+		{AF623D71-446B-444B-93F8-9F4281B2A294}.Release|x86.ActiveCfg = Release|Win32
+		{AF623D71-446B-444B-93F8-9F4281B2A294}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
