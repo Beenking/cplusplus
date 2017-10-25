@@ -31,6 +31,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mutex_test_2", "mutex_test_
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "async_future", "async_future\async_future.vcxproj", "{FA6CBA0E-55E1-4E66-BF62-DC90961FCD70}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "notify_all", "notify_all\notify_all.vcxproj", "{F826ECDC-E1F2-4244-8B48-408E8129F13C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -153,6 +155,14 @@ Global
 		{FA6CBA0E-55E1-4E66-BF62-DC90961FCD70}.Release|x64.Build.0 = Release|x64
 		{FA6CBA0E-55E1-4E66-BF62-DC90961FCD70}.Release|x86.ActiveCfg = Release|Win32
 		{FA6CBA0E-55E1-4E66-BF62-DC90961FCD70}.Release|x86.Build.0 = Release|Win32
+		{F826ECDC-E1F2-4244-8B48-408E8129F13C}.Debug|x64.ActiveCfg = Debug|x64
+		{F826ECDC-E1F2-4244-8B48-408E8129F13C}.Debug|x64.Build.0 = Debug|x64
+		{F826ECDC-E1F2-4244-8B48-408E8129F13C}.Debug|x86.ActiveCfg = Debug|Win32
+		{F826ECDC-E1F2-4244-8B48-408E8129F13C}.Debug|x86.Build.0 = Debug|Win32
+		{F826ECDC-E1F2-4244-8B48-408E8129F13C}.Release|x64.ActiveCfg = Release|x64
+		{F826ECDC-E1F2-4244-8B48-408E8129F13C}.Release|x64.Build.0 = Release|x64
+		{F826ECDC-E1F2-4244-8B48-408E8129F13C}.Release|x86.ActiveCfg = Release|Win32
+		{F826ECDC-E1F2-4244-8B48-408E8129F13C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
