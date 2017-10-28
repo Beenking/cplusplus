@@ -27,6 +27,11 @@ public:
 
 	MyString(MyString&& str)
 	{
+		if (m_data != nullptr)
+		{
+			delete[] m_data;
+			m_data = nullptr;
+		}
 		m_data = str.m_data;
 		str.m_data = nullptr;
 	}
@@ -41,7 +46,8 @@ public:
 
 	MyString& operator= (MyString&& str)
 	{
-		this->swap(str);
+		m_data = str.m_data;
+		str.m_data = nullptr;
 
 		return *this;
 	}
