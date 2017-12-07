@@ -2,7 +2,7 @@
 
 int main()\
 {
-	CPP11::test_reset();
+	CPP11::test_sharedptr_reset();
 
 	return 0;
 }
