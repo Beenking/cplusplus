@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <vector>
+#include "boost_timer_test.h"
 #include <boost/lexical_cast.hpp>
 
 enum Day
@@ -9,7 +11,7 @@ enum Day
 	Tus = 2,
 };
 
-int main()
+int enum_test()
 {
     float f1 = 1.31391f;
     double d1 = 1.31391;
@@ -32,5 +34,33 @@ int main()
     char dest[10];
     sprintf_s(dest, "%.5f", 200.);
     std::cout << dest << std::endl;
+    return 0;
+}
+
+
+class A {
+public:
+    int m_a;
+};
+
+int main()
+{
+    try
+    {
+        int i = 6;
+        std::vector<int> vi{ 1,2,3,4,5 };
+        vi.at(i) = 6;
+
+        std::cout << "hello " << vi[i] << std::endl;
+    }
+    catch (std::exception &ex)
+    {
+        std::cout << ex.what() << std::endl;
+    }
+    catch (...)
+    {
+        std::cout << "... exception" << std::endl;
+    }
+
     return 0;
 }
