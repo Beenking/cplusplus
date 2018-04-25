@@ -50,10 +50,14 @@ public:
         }
     }
 
-    //Image(const Image&&)
-    //{
-    //    cout << "Image(const Image&&)" << endl;
-    //}
+    Image(Image&& img)
+    {
+        cout << "2--Image(const Image&&)" << endl;
+        delete[] m_pdata;
+        m_pdata = img.m_pdata;
+        img.m_pdata = nullptr;
+        img.m_size = 0;
+    }
 
     //Image& operator=(Image&&)
     //{
@@ -85,7 +89,6 @@ int main()
     {
         vecImage.push_back(Image());
     }
-
 
     return 0;
 }
