@@ -1,17 +1,27 @@
+#include "move_test.h"
+#include"right_value_reference_test.h"
+
 #include <iostream>
+
+
 using namespace std;
 
 class Image
 {
 public:
-    Image() 
-    { 
+    Image()
+    {
         cout << "Image()..." << endl;
     }
 
     Image(const Image&)
-    { 
+    {
         cout << "Image(const File&)..." << endl;
+    }
+
+    Image(const Image&&)
+    {
+        cout << "Image(const Image&&)" << endl;
     }
 
     Image& operator= (const Image&)
@@ -25,20 +35,24 @@ public:
     }
 
 private:
-    unsigned char* data;
+    unsigned char* data = nullptr;
 };
 
 
-Image readImage()
+Image readImage(/*path*/)
 {
     Image image;
-    // fill file
-    return image;
+    // fill file data
+    return std::move(image);
 }
+
+
 
 int main()
 {
-    Image file = readImage();
+    //Image image = readImage();
+    //Image i2 = std::move(image);
+    right_value_reference_test();
 
     return 0;
 }

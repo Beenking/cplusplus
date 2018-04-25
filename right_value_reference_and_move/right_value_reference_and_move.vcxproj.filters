@@ -19,4 +19,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="move_test.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="right_value_reference_test.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
