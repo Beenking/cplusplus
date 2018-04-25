@@ -1,6 +1,7 @@
 #include "move_test.h"
 #include"right_value_reference_test.h"
 #include <iostream>
+#include <vector>
 
 typedef unsigned char uchar;
 
