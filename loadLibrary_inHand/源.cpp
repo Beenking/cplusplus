@@ -3,22 +3,19 @@
 #include <iostream>
 
 
-typedef void(*alert)();
+typedef void(*alert)(int i);
 
 
 int main()
-
 {
-	alert func = NULL;
-
-	HINSTANCE h = LoadLibraryExA("test_dll.dll", NULL, LOAD_WITH_ALTERED_SEARCH_PATH);
+	HINSTANCE h = LoadLibraryExA("../x64/Debug/test_dll.dll", NULL, LOAD_WITH_ALTERED_SEARCH_PATH);
 
 	if (h)
 	{
-		func = (alert)GetProcAddress(h, "print");
+		auto func = (alert)GetProcAddress(h, "MyPrint");
 		if (NULL != func)
 		{
-			func();
+			func(2);
 		}
 	}
 	else

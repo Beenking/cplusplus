@@ -4,8 +4,11 @@
 #define DLL_DECLSPEC  __declspec(dllimport)
 #endif
 
+extern "C"
+{
+    DLL_DECLSPEC void MyPrint(int i);
+}
 
-DLL_DECLSPEC void MyPrint(int i);
 
 
 

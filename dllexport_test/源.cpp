@@ -1,9 +1,8 @@
 #include "../test_dll/print_fun.h"
 
-extern void MyPrint(int i);
 int main()
 {
-    MyPrint(19);
+    MyPrint(100);
 
     Test t1;
     t1.print();
