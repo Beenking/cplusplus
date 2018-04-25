@@ -151,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="move_test.h" />
+    <ClInclude Include="mystring.h" />
     <ClInclude Include="right_value_reference_test.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

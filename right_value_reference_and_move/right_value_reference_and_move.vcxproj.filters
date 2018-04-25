@@ -26,5 +26,8 @@
     <ClInclude Include="right_value_reference_test.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="mystring.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
