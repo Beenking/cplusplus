@@ -43,6 +43,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "clamp_test", "clamp_test\cl
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ALL_T", "ALL_T\ALL_T.vcxproj", "{0AEA611F-37C7-4341-B9F2-C83770BD1E9A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "right_value_reference_and_move", "right_value_reference_and_move\right_value_reference_and_move.vcxproj", "{5E025362-524B-48BF-927B-DEC1E0CA319C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -213,6 +215,14 @@ Global
 		{0AEA611F-37C7-4341-B9F2-C83770BD1E9A}.Release|x64.Build.0 = Release|x64
 		{0AEA611F-37C7-4341-B9F2-C83770BD1E9A}.Release|x86.ActiveCfg = Release|Win32
 		{0AEA611F-37C7-4341-B9F2-C83770BD1E9A}.Release|x86.Build.0 = Release|Win32
+		{5E025362-524B-48BF-927B-DEC1E0CA319C}.Debug|x64.ActiveCfg = Debug|x64
+		{5E025362-524B-48BF-927B-DEC1E0CA319C}.Debug|x64.Build.0 = Debug|x64
+		{5E025362-524B-48BF-927B-DEC1E0CA319C}.Debug|x86.ActiveCfg = Debug|Win32
+		{5E025362-524B-48BF-927B-DEC1E0CA319C}.Debug|x86.Build.0 = Debug|Win32
+		{5E025362-524B-48BF-927B-DEC1E0CA319C}.Release|x64.ActiveCfg = Release|x64
+		{5E025362-524B-48BF-927B-DEC1E0CA319C}.Release|x64.Build.0 = Release|x64
+		{5E025362-524B-48BF-927B-DEC1E0CA319C}.Release|x86.ActiveCfg = Release|Win32
+		{5E025362-524B-48BF-927B-DEC1E0CA319C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

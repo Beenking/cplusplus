@@ -24,7 +24,8 @@ public:
 
 int main()
 {
-	Base b1(Base());
+    Base b1;
+	Base b2(b1);
 
 	return 0;
 }
