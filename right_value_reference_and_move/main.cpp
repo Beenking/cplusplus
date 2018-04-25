@@ -1,8 +1,8 @@
 #include "move_test.h"
 #include"right_value_reference_test.h"
-
 #include <iostream>
 
+typedef unsigned char uchar;
 
 using namespace std;
 
@@ -12,6 +12,10 @@ public:
     Image()
     {
         cout << "Image()..." << endl;
+
+        auto defaltSize = 1024;
+        pdata = new uchar(defaltSize);
+        memset(pdata, uchar(0), defaltSize);
     }
 
     Image(const Image&)
@@ -32,10 +36,14 @@ public:
     ~Image()
     {
         cout << "~Image()" << endl;
+        if (pdata)
+        {
+            delete pdata;
+        }
     }
 
 private:
-    unsigned char* data = nullptr;
+    uchar* pdata = nullptr;
 };
 
 
@@ -43,16 +51,17 @@ Image readImage(/*path*/)
 {
     Image image;
     // fill file data
-    return std::move(image);
+    return image;
 }
 
 
 
 int main()
 {
-    //Image image = readImage();
-    //Image i2 = std::move(image);
-    right_value_reference_test();
+    // right_value_reference_test();
+
+    Image image = readImage();
+
 
     return 0;
 }
