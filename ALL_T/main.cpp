@@ -1,8 +1,13 @@
 #include "shared_reset.h"
+#include <string> 
+#include <iostream>
 
-int main()\
+int main()
 {
-	CPP11::test_sharedptr_reset();
+    using namespace std;
+    std::string str1("xxxx");
+    std::string str2("");
 
-	return 0;
+    cout << sizeof(str1) << " " << sizeof(str2) << std::endl;
+    cout << sizeof(std::string) << endl;
 }

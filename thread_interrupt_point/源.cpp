@@ -34,10 +34,10 @@ void test()
 	int i = 0;
 	try 
 	{
-		for (; i < 100000; ++i)
+		for (; ; ++i)
 		{
 			MyThreadInterrupt::interrupt_point();
-			//std::cout << i << std::endl;
+			std::cout << i << std::endl;
 		}
 	}
 	catch (interrupt_exception)
@@ -50,12 +50,9 @@ int main()
 {
 	std::thread t1(test);
 	std::cout << "Main Thread" << std::endl;
-	int i = 1000;
-	while (i--)
-	{
-		;
-	}
 
+    int i;
+    std::cin >> i;
 	MyThreadInterrupt::interrupt();
 	t1.join();
 
