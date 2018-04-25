@@ -4,12 +4,9 @@
 
 void thread_task(int n)
 {
-	//std::this_thread::sleep_for(std::chrono::seconds(n));
+	std::this_thread::sleep_for(std::chrono::seconds(n));
 	int i = 1;
-	while(1)
-	{
-		i = -i;
-	}
+
 	std::cout << "hello thread " << std::this_thread::get_id() << " paused " << n << " seconds" << std::endl;
 }
 

@@ -8,7 +8,7 @@ void Test::print()
 
 int Test::i = 5;
 
-void MyPrint()
+void MyPrint(int i)
 {
-    std::cout << "My Print" << std::endl;
+    std::cout << "My Print " << i <<  std::endl;
 }

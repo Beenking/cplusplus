@@ -1,11 +1,12 @@
 #include "../test_dll/print_fun.h"
-#include <iostream>
 
+extern void MyPrint(int i);
 int main()
 {
-    Test::print();
-    std::cout << Test::i;
+    MyPrint(19);
 
-    MyPrint();
+    Test t1;
+    t1.print();
+    Test::i = 3;
     return 0;
 }

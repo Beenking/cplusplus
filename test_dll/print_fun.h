@@ -4,10 +4,13 @@
 #define DLL_DECLSPEC  __declspec(dllimport)
 #endif
 
-DLL_DECLSPEC void MyPrint();
 
-class DLL_DECLSPEC Test {
+DLL_DECLSPEC void MyPrint(int i);
+
+
+
+class  Test {
 public:
-    static void print();
-    static int i;
+    DLL_DECLSPEC static void print();
+    DLL_DECLSPEC static int i;
 };
