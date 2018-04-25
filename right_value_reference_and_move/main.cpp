@@ -85,6 +85,8 @@ int main()
     // right_value_reference_test();
 
     std::vector<Image> vecImage;
+    vecImage.reserve(5);
+
     for (int i = 0; i < 5; i++)
     {
         vecImage.push_back(Image());
