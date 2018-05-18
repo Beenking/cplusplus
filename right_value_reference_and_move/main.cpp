@@ -1,5 +1,3 @@
-#include "move_test.h"
-#include"right_value_reference_test.h"
 #include <iostream>
 #include <vector>
 #include <ctime>
@@ -29,7 +27,7 @@ public:
 
     Image& operator= (const Image& img)
     {
-       // cout << "operator=(const Image&) " << endl;
+       //cout << "operator=(const Image&) " << endl;
         if (this != &img)
         {
             delete[] m_pdata;
@@ -44,26 +42,27 @@ public:
 
     ~Image()
     {
-        //cout << "3--~Image()" << endl;
+       // cout << "3--~Image()" << endl;
         if (m_pdata)
         {
             delete[] m_pdata;
         }
     }
 
-    //Image(Image&& img)
-    //{
-    //    //cout << "2--Image(const Image&&)" << endl;
-    //    delete[] m_pdata;
-    //    m_pdata = img.m_pdata;
-    //    img.m_pdata = nullptr;
-    //    img.m_size = 0;
-    //}
+    Image(Image&& img)
+    {
+        //cout << "2--Image(const Image&&)" << endl;
+        delete[] m_pdata;
+        m_pdata = img.m_pdata;
+        img.m_pdata = nullptr;
+        img.m_size = 0;
+    }
 
-    //Image& operator=(Image&&)
-    //{
-    //    cout << "operator=(Image&&)" << endl;
-    //}
+    // implement yourself
+    Image& operator=(Image&&)
+    {
+        cout << "operator=(Image&&)" << endl;
+    }
 
 private:
 
@@ -83,8 +82,6 @@ Image readImage(/*path*/)
 
 int main()
 {
-    // right_value_reference_test();
-
     std::vector<Image> vecImage;
 
     clock_t start, end;

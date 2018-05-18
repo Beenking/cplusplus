@@ -18,6 +18,9 @@
     <ClInclude Include="shared_reset.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="template_print.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

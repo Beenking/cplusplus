@@ -147,6 +147,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="shared_reset.h" />
+    <ClInclude Include="template_print.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
