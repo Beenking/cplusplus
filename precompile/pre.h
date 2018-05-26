@@ -1,0 +1,12 @@
+#pragma once
+#include <math.h>
+#include <algorithm>
+#include <math.h>
+#include <memory>
+#include <iostream>
+#include <vector>
+#include <list>
+#include <map>
+#include <stack>
+#include <string>
+#include <set>
