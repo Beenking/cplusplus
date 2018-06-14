@@ -10,7 +10,8 @@ public:
     A() { std::cout << "A Constructor" << std::endl; }
     ~A(){ std::cout << "A Destructor" << std::endl; }
 
-    std::shared_ptr<B> m_spB;
+    std::weak_ptr<B> m_spB;
+    //std::shared_ptr<B> m_spB;
 };
 
 class B {
