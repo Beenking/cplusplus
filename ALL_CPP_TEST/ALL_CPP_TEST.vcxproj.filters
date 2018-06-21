@@ -23,5 +23,8 @@
     <ClInclude Include="check_memory_leaks.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="class_A.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
