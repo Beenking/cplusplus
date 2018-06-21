@@ -1,6 +1,5 @@
 #pragma once
 #include <memory>
-#include <thread>
 
 namespace CPP11
 {
@@ -20,18 +19,4 @@ namespace CPP11
 
 		return 0;
 	}
-
-
-    double thread_exception_inverse(int i)
-    {
-        if (0 != i)
-        {
-            return 1 / i;
-        }
-        else
-        {
-            throw std::exception("divide zero excepiton");
-        }
-    }
-
 }
