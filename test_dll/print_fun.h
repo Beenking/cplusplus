@@ -7,6 +7,7 @@
 extern "C"
 {
     DLL_DECLSPEC void MyPrint(int i);
+    DLL_DECLSPEC void MyPrint2();
 }
 
 

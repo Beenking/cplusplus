@@ -3,6 +3,7 @@
 int main()
 {
     MyPrint(100);
+    MyPrint2();
 
     Test t1;
     t1.print();
